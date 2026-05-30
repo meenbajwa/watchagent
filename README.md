@@ -2,7 +2,7 @@
 
 Weather monitoring service for Ottawa, Toronto, and Vancouver. Polls Open-Meteo every 5 minutes, detects notable weather conditions, and exposes everything through a REST API.
 
-This is my solution to the Nokia take-home challenge. I focused on making the event detection reasoning clear—why I chose city-specific thresholds, how the system works, and how to verify it's correct.
+I focused on making the event detection reasoning clear—why I chose city-specific thresholds, how the system works, and how to verify it's correct.
 
 **Stack**: Python 3.11, FastAPI, SQLite, Docker Compose, GitHub Actions  
 **What I'm Most Proud Of**: The event detection logic is thoughtful and defensible. The `.cursor/` folder shows the patterns I discovered. The tests are comprehensive enough to catch regressions.
