@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  watchagent:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - POLL_INTERVAL=300
+      - DB_PATH=/data/watchagent.db
+    volumes:
+      - watchagent_data:/data  # Named volume so DB survives container restarts
+    restart: unless-stopped  # Restart on crash but not on manual docker compose down
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  watchagent_data:
+    driver: local
